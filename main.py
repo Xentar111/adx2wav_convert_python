@@ -2,21 +2,21 @@ import os
 import subprocess
 from adx2wav import adx2wav
 
-input_directory = "./bgm"  # Cambia esto por la ruta al directorio con archivos .ADX
-output_directory = "./output"  # Cambia esto por la ruta al directorio donde guardar los archivos .WAV
+input_directory = "./bgm"  # Change this to the path to the directory with . ADX
+output_directory = "./output"  # Change this to the path to the directory where to save the files. .WAV
 
-# Lista todos los archivos en el directorio de entrada
+# List all files in the input directory
 files = os.listdir(input_directory)
 
-# Filtra los archivos .ADX
+# Filter the . ADX
 adx_files = [file for file in files if file.lower().endswith(".adx")]
 
-# Convierte cada archivo .ADX a .WAV
-for adx_file in adx_files:#for one by one in adx_files
-    input_file = os.path.join(input_directory, adx_file)#added directory and file to wav converted
-    with open(input_file , "rb") as f:#read this file
-        data = f.read()#this is save in data
-    wav = adx2wav(data)#after converted to wav
+# Convert each .ADX to .WAV
+for adx_file in adx_files: # For one by one in adx_files
+    input_file = os.path.join(input_directory, adx_file) # Added directory and file to wav converted
+    with open(input_file , "rb") as f: # Read this file
+        data = f.read() # This is save in data
+    wav = adx2wav(data) # After converted to wav
     output_file = os.path.join(output_directory, adx_file[:-4] + ".wav")
-    with open(output_file , "wb") as f:#write this, but overwrite this
-        f.write(wav)#overwrite
+    with open(output_file , "wb") as f: # Write this, but overwrite this
+        f.write(wav) # Overwrite
